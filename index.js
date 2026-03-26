@@ -1,10 +1,12 @@
-const { MeetingModel } = require('./meeting.model');
-const { TaskModel } = require('./task.model');
-const { ActionModel } = require('./action.model');
+const express = require('express');
 
-module.exports = {
-  MeetingModel,
-  TaskModel,
-  ActionModel,
-};
+const healthRoutes = require('./health.routes');
+const meetingRoutes = require('../modules/meeting-to-action/routes/meeting.routes');
+
+const router = express.Router();
+
+router.use('/', healthRoutes);
+router.use('/meetings', meetingRoutes);
+
+module.exports = router;
 
